@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Сердечная открытка для Камилы</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="heart-wrapper">
+    <div class="heart" id="heart">
+      <div class="text" id="text">
+        <h1>I love you, Kamila!</h1>
+      </div>
+    </div>
+    <button id="open-button">💖 Нажми на сердечко 💖</button>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
+body {
+  margin: 0;
+  font-family: 'Arial', sans-serif;
+  background: linear-gradient(135deg, #ff85b3, #d880ff);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  color: #fff;
+}
+
+.heart-wrapper {
+  text-align: center;
+}
+
+.heart {
+  position: relative;
+  width: 100px;
+  height: 100px;
+  background-color: #ff4b8a;
+  transform: rotate(45deg);
+  transition: all 0.6s ease-in-out;
+  cursor: pointer;
+  margin: 50px auto;
+}
+
+.heart:before,
+.heart:after {
+  content: '';
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  background-color: #ff4b8a;
+  border-radius: 50%;
+}
+
+.heart:before {
+  top: -50px;
+  left: 0;
+}
+
+.heart:after {
+  left: -50px;
+  top: 0;
+}
+
+.text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  font-size: 18px;
+  text-align: center;
+  transition: opacity 0.8s ease-in-out;
+  transform: scale(0.8);
+  color: #fff;
+}
+
+button {
+  padding: 10px 20px;
+  font-size: 16px;
+  color: #fff;
+  background-color: #8b2fff;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+button:hover {
+  background-color: #ae52ff;
+}
+const heart = document.getElementById('heart');
+const text = document.getElementById('text');
+
+heart.addEventListener('click', function () {
+  // Расширяем сердце
+  heart.style.width = '300px';
+  heart.style.height = '300px';
+
+  // Показываем текст плавно
+  setTimeout(() => {
+    text.style.opacity = '1';
+    text.style.transform = 'scale(1)';
+  }, 600);
+});
